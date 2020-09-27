@@ -4,7 +4,7 @@
     <th>name</th>
   </tr>
   <ng-container *ngIf="heros">
-    <tr *ngFor="let hero of heros">
+    <tr *ngFor="let hero of heros.results">
       <td>{{hero.id}}</td>
       <td>{{hero.name}}</td>
     </tr>

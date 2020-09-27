@@ -12,13 +12,12 @@ export class HeroComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  heros: []
+  heros: any
 
   private url = `https://superheroapi.com/api.php/${TOKEN}/search/flash`
 
   ngOnInit() {
     this.http.get(this.url)
-            // .subscribe(res => console.log(res.results))
-            .subscribe(res => this.heros = res.results)
+            .subscribe(res => this.heros = res)
   }
 }
