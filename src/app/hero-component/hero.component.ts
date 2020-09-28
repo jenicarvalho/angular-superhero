@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
-import { TOKEN } from '../../token'
+import { HeroService } from '../services/hero.service'
 
 @Component({
   selector: 'hero-component',
@@ -10,14 +10,11 @@ import { TOKEN } from '../../token'
 })
 export class HeroComponent implements OnInit {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private heroService: HeroService) {}
 
   heros: any
 
-  private url = `https://superheroapi.com/api.php/${TOKEN}/search/flash`
-
   ngOnInit() {
-    this.http.get(this.url)
-            .subscribe(res => this.heros = res)
+    this.heroService.getHeros().subscribe(res => this.heros = res)
   }
 }
